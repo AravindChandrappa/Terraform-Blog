@@ -1,5 +1,5 @@
 provider "aws" {
-  region     = "us-east-1"
+  region     = "us-east-2"
   
   
 }
@@ -18,7 +18,7 @@ resource "aws_instance" "ec2_public" {
     create_before_destroy = true
   }
   tags = {
-    "Name" = "EC2-PUBLIC"
+    "Name" = "EC2-sw-testing"
   }
   
  
