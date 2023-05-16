@@ -13,9 +13,9 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "security_group" {
-  description = "Name of security group"
-  default     = "security_jenkins_grp"
+variable "security_group_id" {
+ type    = string
+ default = "sg-0cd25ab6be969c267"
 }
 
 variable "tag_name" {
@@ -32,13 +32,8 @@ variable "ami_id" {
   description = "VPC CIDR BLOCK"
   type        = string
 }
-variable "Public_Subnet_1" {
-  default     = "10.0.0.0/24"
-  description = "Public_Subnet_1"
-  type        = string
+variable "subnet_id" {
+ type    = string
+ default = "subnet-004ac59a348d7512b"
 }
-variable "Private_Subnet_1" {
-  default     = "10.0.2.0/24"
-  description = "Private_Subnet_1"
-  type        = string
-}
+
