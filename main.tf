@@ -33,9 +33,7 @@ resource "aws_instance" "ec2_public" {
   }
   tags = {
     "Name" = "EC2-sw-testing"
-  }
-  
- 
+  } 
 }
 ################################
  
