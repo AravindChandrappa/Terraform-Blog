@@ -7,3 +7,5 @@ terraform plugin installed and configured.
 
 updated security group and subnet id values 
 new edit
+
+updated policy
