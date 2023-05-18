@@ -6,3 +6,4 @@ installed terraform in jenkins machine
 terraform plugin installed and configured.
 
 updated security group and subnet id values 
+new edit
