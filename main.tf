@@ -23,7 +23,7 @@ resource "aws_instance" "ec2_public" {
   ami                          = var.ami_id
   instance_type                = var.instance_type
   key_name                     = var.key_name
-  security_group_id            = "sg-0cd25ab6be969c267"
+  security_group_id            = var.security_group_id
   subnet_id                    = var.subnet_id
   associate_public_ip_address = true
   #user_data                   = "${data.template_file.provision.rendered}"
