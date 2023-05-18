@@ -14,7 +14,7 @@ variable "instance_type" {
 }
 
 variable "security_group_id" {
- type    = string
+ description = "existing security group id"
  default = "sg-0cd25ab6be969c267"
 }
 
@@ -33,7 +33,7 @@ variable "ami_id" {
   type        = string
 }
 variable "subnet_id" {
- type    = string
+ description = "existing subnet id"
  default = "subnet-004ac59a348d7512b"
 }
 
