@@ -23,8 +23,8 @@ resource "aws_instance" "ec2_public" {
   ami                          = var.ami_id
   instance_type                = var.instance_type
   key_name                     = var.key_name
-  security_group_id            = var.security_group_id
-  subnet_id                    = var.subnet_id
+  #security_group_id            = var.security_group_id
+  #subnet_id                    = var.subnet_id
   associate_public_ip_address = true
   #user_data                   = "${data.template_file.provision.rendered}"
   #iam_instance_profile = "${aws_iam_instance_profile.some_profile.id}"
