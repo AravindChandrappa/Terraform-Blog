@@ -37,15 +37,11 @@ resource "aws_instance" "ec2_public" {
   provisioner "file" {
     source      = "~/easyELKnginx.sh"
     destination = "/tmp/easyELKnginx.sh"
-    source      = "~/easyELKapache.sh"
-    destination = "/tmp/easyELKapache.sh"
   }
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/easyELKnginx.sh ",
       "sudo /tmp/easyELKnginx.sh ",
-      "chmod +x /tmp/easyELKapache.sh",
-      "sudo /tmp/easyELKapache.sh",
     ]
   }
 }
