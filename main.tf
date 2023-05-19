@@ -30,21 +30,10 @@ resource "aws_instance" "ec2_public" {
   #iam_instance_profile = "${aws_iam_instance_profile.some_profile.id}"
   user_data = <<-EOF
 	    #!/bin/bash
-	    sudo su 
-            apt update -y
-            yum install postgresgl-server -y 
-            
-  	    # initialize postgres database and start service 
-            
-	    postgresgl-setup initdb
-            systemctl start postgresql.service
-            systemctl enable postgresql.service
-            
-	    # modify pg_hba.conf to allow access from any ip address and set trust authentication for postgres user 
-            sed -i "s/host   all    all 127.0.0.1\/32     ident/host    all   all  0.0.0.0\/0
-            sed -i '$a local   all  postgres    trust'  /var/lib/pgsql/data/postgresql.conf
-
-            sudo -u postgres psql -c "ALTER USER PASSWORD '$(random_password.db_password.result);"  
+	    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+	    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+	    sudo apt-get update
+	    sudo apt-get -y install postgresql
    EOF
   lifecycle {
     create_before_destroy = true
