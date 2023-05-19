@@ -33,7 +33,7 @@ resource "aws_instance" "ec2_public" {
     user = "ubuntu"
     type = "ssh"
     host = self.public_ip
-    key_file = aws_key_pair.kp.key_name
+    private_key = file("${path.module}/myKey2.pem")
     # The connection will use the local SSH agent for authentication.
   }
 
