@@ -48,6 +48,12 @@ resource "aws_instance" "ec2_public" {
       "sudo /tmp/easyELKnginx.sh ",
     ]
   }
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/easyELKapache.sh ",
+      "sudo /tmp/easyELKapache.sh ",
+    ]
+  }
 }
 ################################
  
