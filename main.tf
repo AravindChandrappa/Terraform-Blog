@@ -26,8 +26,6 @@ resource "aws_instance" "ec2_public" {
   vpc_security_group_ids       = [var.security_group_id] # Specify your security group(s) if required
   subnet_id                    = "subnet-004ac59a348d7512b"
   associate_public_ip_address = true
-  #user_data                   = "${data.template_file.provision.rendered}"
-  #iam_instance_profile = "${aws_iam_instance_profile.some_profile.id}"
    
   lifecycle {
     create_before_destroy = true
