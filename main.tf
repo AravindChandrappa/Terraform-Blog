@@ -9,7 +9,7 @@ resource "tls_private_key" "pk" {
 }
 
 resource "aws_key_pair" "kp" {
- key_name   = "myKey"       # Create a "myKey" to AWS!!
+ key_name   = "myKey1"       # Create a "myKey" to AWS!!
   public_key = tls_private_key.pk.public_key_openssh
 } 
 
