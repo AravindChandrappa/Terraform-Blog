@@ -54,6 +54,13 @@ resource "aws_instance" "ec2_public" {
       "sudo /tmp/easyELKapache.sh ",
     ]
   }
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    password    = ""
+    private_key = file(var.keyPath)
+    host        = self.public_ip
+  }
 }
 ################################
  
