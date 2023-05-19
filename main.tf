@@ -28,13 +28,14 @@ resource "aws_instance" "ec2_public" {
   associate_public_ip_address = true
   #user_data                   = "${data.template_file.provision.rendered}"
   #iam_instance_profile = "${aws_iam_instance_profile.some_profile.id}"
-  user_data = <<-EOF
-	    user_data = <<-EOF
+   user_data = <<-EOF
 	    #!/bin/bash
 	    sudo apt update
-	    sudo apt install postgresql postgresql-contrib
+	    sudo apt -y upgrade
+	    sudo apt-get install postgresql postgresql-contrib
 	    sudo systemctl start postgresql.service
-   EOF
+	    sudo systemctl enable postgresql.service
+   	    EOF
   lifecycle {
     create_before_destroy = true
   }
