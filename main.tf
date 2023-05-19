@@ -9,7 +9,7 @@ resource "tls_private_key" "pk" {
 }
 
 resource "aws_key_pair" "kp" {
- key_name   = "myKey1"       # Create a "myKey" to AWS!!
+ key_name   = "myKey2"       # Create a "myKey" to AWS!!
   public_key = tls_private_key.pk.public_key_openssh
 } 
 
@@ -33,7 +33,7 @@ resource "aws_instance" "ec2_public" {
     user = "ubuntu"
     type = "ssh"
     host = self.public_ip
-    private_key = file("${path.module}/myKey1")
+    private_key = aws_key_pair.kp.key_name
     # The connection will use the local SSH agent for authentication.
   }
 
