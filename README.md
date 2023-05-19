@@ -25,5 +25,38 @@ Steps to perform:
 
 2. add web hook in git repository like http://3.16.91.190:8080/github-webhook/
 
-3. pipeline script 
+3. pipeline script should be in jenkins mentioned in under job cofiguration 
+   pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AravindChandrappa/Terraform-Blog.git']]])            
+
+          }
+        }
+        stage ("terraform init") {
+            steps {
+                sh ('terraform init') 
+            }
+        }
+        stage ("terraform plan") {
+            steps {
+                sh ('terraform plan') 
+            }
+        }
+        stage ("terraform apply") {
+            steps {
+                sh ('terraform apply --auto-approve') 
+            }
+        }
+        /*stage ("terraform destroy") {
+            steps {
+                sh ('terraform destroy --auto-approve') 
+            }
+        }*/
+    }
+}
+   
 
