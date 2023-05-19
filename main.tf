@@ -35,12 +35,12 @@ resource "aws_instance" "ec2_public" {
     "Name" = "EC2-sw-testing"
   } 
   provisioner "file" {
-    source      = "~/easyELKnginx.sh",
-    destination = "/tmp/easyELKnginx.sh",
+    source      = "~/easyELKnginx.sh"
+    destination = "/tmp/easyELKnginx.sh"
   }
   provisioner "file" {
-    source      = "~/easyELKapache.sh",
-    destination = "/tmp/easyELKapache.sh",
+    source      = "~/easyELKapache.sh"
+    destination = "/tmp/easyELKapache.sh"
   }
   provisioner "remote-exec" {
     inline = [
