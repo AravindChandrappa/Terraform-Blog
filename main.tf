@@ -28,26 +28,7 @@ resource "aws_instance" "ec2_public" {
   associate_public_ip_address = true
   #user_data                   = "${data.template_file.provision.rendered}"
   #iam_instance_profile = "${aws_iam_instance_profile.some_profile.id}"
-   connection {
-    # The default username for our AMI
-    user = "ubuntu"
-    type = "ssh"
-    host = self.public_ip
-    private_key = file("${path.module}/myKey2.pem")
-    # The connection will use the local SSH agent for authentication.
-  }
-
-  # install java, create dir
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get -y update",
-      "sudo apt-get -y install openjdk-8-jre-headless",
-      "mkdir data",
-      "cd data",
-      "mkdir inbox",
-      "cd ..",
-    ]
-  }
+   
   lifecycle {
     create_before_destroy = true
   }
