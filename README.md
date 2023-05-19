@@ -58,5 +58,6 @@ Steps to perform:
         }*/
     }
 }
-updated main.tf file with postgres installation code
+
+updated main.tf file with postgres installation code new one
 
