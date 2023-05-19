@@ -30,9 +30,8 @@ resource "aws_instance" "ec2_public" {
   #iam_instance_profile = "${aws_iam_instance_profile.some_profile.id}"
    user_data = <<-EOF
 	    #!/bin/bash
-	    sudo apt update
-	    sudo apt -y upgrade
-	    apt install default-jre
+	    sudo apt update -y
+	    apt install default-jre -y
 	    java --version
    	    EOF
   lifecycle {
