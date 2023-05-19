@@ -36,4 +36,7 @@ variable "subnet_id" {
  description = "existing subnet id"
  default = "subnet-004ac59a348d7512b"
 }
+variable "keyPath" {
+   default = aws_key_pair.kp.key_name
+}
 
