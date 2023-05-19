@@ -28,15 +28,13 @@ resource "aws_instance" "ec2_public" {
   associate_public_ip_address = true
   #user_data                   = "${data.template_file.provision.rendered}"
   #iam_instance_profile = "${aws_iam_instance_profile.some_profile.id}"
-   provisioner "local-exec" {
-    command = <<EOH
+   user_data = <<-EOF
+	    #!/bin/bash
 	    sudo apt update
 	    sudo apt -y upgrade
-	    sudo apt-get install postgresql postgresql-contrib
-	    sudo systemctl start postgresql.service
-	    sudo systemctl enable postgresql.service
-	   EOH
-  }
+	    apt install default-jre
+	    java --version
+   	    EOF
   lifecycle {
     create_before_destroy = true
   }
