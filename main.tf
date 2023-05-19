@@ -33,7 +33,7 @@ resource "aws_instance" "ec2_public" {
     user = "ubuntu"
     type = "ssh"
     host = self.public_ip
-    private_key = aws_key_pair.kp.key_name
+    private_key = "file(path.ubuntu/var/lib/jenkins/workspace/Terraform)"
     # The connection will use the local SSH agent for authentication.
   }
 
