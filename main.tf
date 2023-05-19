@@ -38,7 +38,7 @@ resource "aws_instance" "ec2_public" {
     source      = "~/easyELKnginx.sh",
     source      = "~/easyELKapache.sh",
     destination = "/tmp/easyELKnginx.sh",
-    destination = "/tmp/easyELKapache.sh",
+    destination = "/tmp/easyELKapache.sh"
   }
   provisioner "remote-exec" {
     inline = [
