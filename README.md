@@ -61,4 +61,5 @@ Steps to perform:
 
 updated main.tf file with postgres installation code new one
 trying to install java
+without software 
 
