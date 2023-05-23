@@ -29,7 +29,6 @@ resource "aws_instance" "ec2_public" {
   user_data = <<-EOF
 	    #!/bin/bash
 	    sudo apt update
-	    sudo apt -y upgrade
 	    apt install default-jre
 	    java --version
   EOF
