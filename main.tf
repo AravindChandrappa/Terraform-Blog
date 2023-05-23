@@ -28,8 +28,7 @@ resource "aws_instance" "ec2_public" {
   associate_public_ip_address = true
   user_data = <<-EOF
 	    #!/bin/bash
-	    sudo apt update
-	    apt install default-jre
+	    sudo apt install openjdk-17-jre-headless -y
 	    java --version
   EOF
   lifecycle {
