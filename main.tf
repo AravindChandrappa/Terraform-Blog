@@ -28,7 +28,7 @@ resource "aws_instance" "ec2_public" {
   associate_public_ip_address = true
   user_data = <<-EOL
 	    #!/bin/bash -xe
-	    sudo apt update
+	    apt update
 	    apt install openjdk-11-jdk --yes
 	    apt install openjdk-11-jre --yes
 	    java --version
