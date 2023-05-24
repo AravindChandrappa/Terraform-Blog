@@ -24,7 +24,7 @@ variable "tag_name" {
 }
 variable "ami_id" {
   description = "AMI for Ubuntu Ec2 instance"
-  default     = "ami-024e6efaf93d85776"
+  default     = "ami-05eea9de06c839c7c"
 }
 
  variable "vpc-cidr" {
