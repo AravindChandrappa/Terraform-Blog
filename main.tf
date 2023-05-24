@@ -29,7 +29,8 @@ resource "aws_instance" "ec2_public" {
   user_data = <<-EOL
 	    #!/bin/bash -xe
 	    sudo apt update
-	    apt install openjdk-8-jdk --yes
+	    sudo apt-get install openjdk-11-jdk
+	    sudo apt-get install openjdk-11-jre
 	    java --version
    	    EOL
   lifecycle {
