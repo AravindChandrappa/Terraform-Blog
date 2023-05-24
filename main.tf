@@ -31,6 +31,7 @@ resource "aws_instance" "ec2_public" {
 	    apt update
 	    apt install openjdk-11-jdk --yes
 	    apt install openjdk-11-jre --yes
+	    apt install maven --yes
 	    java --version
    	    EOL
   lifecycle {
