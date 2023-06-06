@@ -29,8 +29,9 @@ resource "aws_instance" "ec2_public" {
   user_data = <<-EOL
 	    #!/bin/bash -xe
 	    sudo su 
-            apt update -y
-            apt install postgresgl-server -y 
+	    sudo apt update -y
+	    apt install openjdk-8-jdk --yes
+            apt install postgresgl-server --yes 
             
   	    # initialize postgres database and start service 
             
