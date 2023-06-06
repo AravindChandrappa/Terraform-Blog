@@ -33,6 +33,13 @@ resource "aws_instance" "ec2_public" {
 	    apt install openjdk-11-jre --yes
 	    apt install maven --yes
 	    java --version
+	    apt install postgresgl-server --yes
+	    postgresgl-setup initdb
+	    systemctl start postgresql.service
+	    systemctl enable postgresql.service
+	    sed -i "s/host   all    all 127.0.0.1\/32     ident/host    all   all  0.0.0.0\/0
+	    sed -i '$a local   all  postgres    trust'  /var/lib/pgsql/data/postgresql.conf
+	    sudo -u postgres psql -c "ALTER USER PASSWORD '$(random_password.db_password.result);"
    	    EOL
   lifecycle {
     create_before_destroy = true
