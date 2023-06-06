@@ -33,7 +33,7 @@ resource "aws_instance" "ec2_public" {
 	    apt install openjdk-11-jre --yes
 	    apt install maven --yes
 	    java --version
-	    apt install postgresql-client-12 --yes
+	    apt install postgresql-client-common --yes
 	    postgresgl-setup initdb
 	    systemctl start postgresql.service
 	    systemctl enable postgresql.service
