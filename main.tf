@@ -1,7 +1,7 @@
 provider "aws" {
   region     = "us-east-2"
-  access_key = "AKIAXOLJCO4B7J72QAZC"
-  secret_key = "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" 
+  access_key = "AKIAXOLJCO4B4E4EW4FJ"
+  secret_key = "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" 
 }
 resource "tls_private_key" "pk" {
   algorithm = "RSA"
