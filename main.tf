@@ -33,12 +33,7 @@ resource "aws_instance" "ec2_public" {
 	    apt install openjdk-11-jre --yes
 	    apt install maven --yes
 	    java --version
-	    sudo apt --yes install vim bash-completion wget
-	    sudo apt --yes upgrade
-	    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-            echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
-            sudo apt update
-	    sudo apt --yes install postgresql-client-12
+	    apt install postgresql-client-12 --yes
 	    postgresgl-setup initdb
 	    systemctl start postgresql.service
 	    systemctl enable postgresql.service
