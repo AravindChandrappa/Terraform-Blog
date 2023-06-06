@@ -28,11 +28,21 @@ resource "aws_instance" "ec2_public" {
   associate_public_ip_address = true
   user_data = <<-EOL
 	    #!/bin/bash -xe
-	    apt update
-	    apt install openjdk-11-jdk --yes
-	    apt install openjdk-11-jre --yes
-	    apt install maven --yes
-	    java --version
+	    sudo su 
+            apt update -y
+            apt install postgresgl-server -y 
+            
+  	    # initialize postgres database and start service 
+            
+	    postgresgl-setup initdb
+            systemctl start postgresql.service
+            systemctl enable postgresql.service
+            
+	    # modify pg_hba.conf to allow access from any ip address and set trust authentication for postgres user 
+            sed -i "s/host   all    all 127.0.0.1\/32     ident/host    all   all  0.0.0.0\/0
+            sed -i '$a local   all  postgres    trust'  /var/lib/pgsql/data/postgresql.conf
+
+            sudo -u postgres psql -c "ALTER USER PASSWORD '$(random_password.db_password.result);"  
    	    EOL
   lifecycle {
     create_before_destroy = true
